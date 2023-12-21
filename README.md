@@ -1,28 +1,27 @@
 # Transfer Learning e Fine-Tuning com VGG16
 
-**Objetivo:**
-Este repositório do GitHub contém um jupyter notebook sobre transfer learning e fine-tuning baseado em um notebook oficial do TensorFlow. O tutorial tem como objetivo demonstrar a classificação de imagens de gatos e cães usando transfer learning a partir de uma rede pré-treinada VGG16.
+**Descrição:**
+O projeto tem como objetivo implementar e avaliar o desempenho de um modelo VGG16 utilizado como "backbone" em três cenários distintos:
 
-**Principais Conceitos:**
-- **Transfer Learning:**
-  - Utiliza um modelo pré-treinado, previamente treinado em um grande conjunto de dados para tarefas de classificação de imagens.
-  - O modelo pré-treinado pode ser usado como está ou personalizado para uma tarefa específica.
+1. **Treinamento do Zero:**
+   - Utiliza o VGG16 sem treinamento prévio.
+   - Remove a última camada e adiciona um novo classificador.
+   - Treina o modelo do zero e avalia seu desempenho.
 
-- **Intuição por trás do Transfer Learning para Classificação de Imagens:**
-  - Um modelo treinado em um conjunto de dados grande e diversificado serve como um modelo visual genérico.
-  - Aproveita mapas de características aprendidos sem começar do zero, evitando a necessidade de treinar um modelo grande em um conjunto de dados maciço.
+2. **Usando uma Rede Pré-treinada como Extrator de Características:**
+   - Utiliza o mesmo modelo do Experimento 1, mas com o VGG16 pré-treinado no ImageNet.
+   - Congela todas as camadas do VGG16, treina e avalia o modelo.
 
-**Duas Abordagens de Customização:**
-1. **Extração de Características:**
-   - Usa representações aprendidas por uma rede anterior para extrair características significativas de novas amostras.
-   - Adiciona um novo classificador (treinado do zero) sobre o modelo VGG16 pré-treinado, reaproveitando mapas de características aprendidos anteriormente.
+3. **Ajuste Fino das Últimas Camadas:**
+   - Utiliza um VGG16 pré-treinado.
+   - Descongela os últimos blocos de convolução de acordo com opções específicas.
+     - 3-a) Descongela os últimos blocos a partir de "block5_conv1", treina e avalia o modelo.
+     - 3-b) Descongela os últimos blocos a partir de "block4_conv1", treina e avalia o modelo.
+     - 3-c) Descongela todos os blocos de convolução, treina e avalia o modelo.
 
-2. **Fine-Tuning:**
-   - Descongela algumas das camadas superiores de um modelo VGG16 congelado.
-   - Treina em conjunto as camadas recém-adicionadas do classificador e as últimas camadas do modelo base.
-   - Ajusta finamente as representações de características de ordem superior no modelo base para torná-las mais relevantes para a tarefa de classificação específica.
+**Conjunto de Dados:**
+Conjunto de dados Beans: imagens de feijões no campo, capturadas por smartphones, com 3 classes (2 de doenças e 1 saudável). As imagens são redimensionadas para 224x224.
 
-**Rede Utilizada:**
-- VGG16
-
-Explore o notebook para obter insights sobre a implementação de técnicas de transfer learning e fine-tuning, aproveitando os recursos poderosos da arquitetura VGG16.
+- URL de Treinamento: ['https://storage.googleapis.com/ibeans/train.zip'](https://storage.googleapis.com/ibeans/train.zip)
+- URL de Validação: ['https://storage.googleapis.com/ibeans/validation.zip'](https://storage.googleapis.com/ibeans/validation.zip)
+- URL de Teste: ['https://storage.googleapis.com/ibeans/test.zip'](https://storage.googleapis.com/ibeans/test.zip)
