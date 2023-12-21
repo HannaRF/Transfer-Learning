@@ -1,5 +1,7 @@
 # Transfer Learning e Fine-Tuning com VGG16
 
+![image](https://github.com/HannaRF/Transfer-Learning/assets/85463854/229a6434-f112-4902-b606-857894c64a1e)
+
 **Descrição:**
 O projeto tem como objetivo implementar e avaliar o desempenho de um modelo VGG16 utilizado como "backbone" em três cenários distintos:
 
